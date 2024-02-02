@@ -1,43 +1,35 @@
 //Main dashboard
-import React from "react";
+import React,{ useState, useEffect } from "react";
+import Slider from "react-slick";
 import Product from "../components/Products"
 import Navbar from '../components/Navbar';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const Home  = () => {
 
-    const products = [
-        {
-          title: 'Product ',
-          image: 'https://picsum.photos/id/238/150/150',
-          price: '55.99',
-          details: 'Great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking...',
-          bannerBg:'#2BD9AF' , 
-        },
-        {
-          title: 'Product ',
-          image: 'https://picsum.photos/id/237/150/150',
-          price: '7.95',
-          details: 'Product 2 details go here.',
-          bannerBg:'#FF5E84',
-        },
-        {
-            title: 'Product ',
-            image: 'https://picsum.photos/id/239/150/150',
-            price: '7.95',
-            details: 'Product 2 details go here.',
-            bannerBg:'#FF5E84',
-          },
-          {
-            title: 'Product ',
-            image: 'https://picsum.photos/id/249/150/150',
-            price: '7.95',
-            details: 'Product 2 details go here.',
-            bannerBg:'#FF5E84',
-          },
-       
-     
-        // Add more products as needed
-      ];
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+          try {
+            const response = await fetch("https://fakestoreapi.com/products");
+            const data = await response.json();
+            setProducts(data);
+          } catch (error) {
+            console.error("Error fetching products:", error);
+          }
+        };
+    
+        fetchProducts();
+      }, []);
+
+    const settings = {
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4, // Adjust the number of slides to show at once
+        slidesToScroll: 1,
+      };
 
       // Sample categories (placeholders)
     const categories = [
@@ -55,16 +47,21 @@ const Home  = () => {
     ];
 
     return (
-        <div className="">
+        <div>
             <  Navbar />
             
         <h3 className="mb-2 text-xl font-bold p-4 ml-36"> Flash sale</h3>
-       
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4  md:gap-2 p-2">
-         {products.map((product, index) => (
-        <Product key={index} {...product} />
-      ))}
-        </div>
+
+        <div className="carousel-container">
+        <Slider {...settings}>
+          {products.map((product, index) => (
+             <div key={index}>
+             <Product category={product.category} {...product} />
+            </div>
+          ))}
+        </Slider>
+      </div>
+
         <h2 className="mb-2 text-xl font-bold p-4 ml-36"> Categories</h2>
         <div className="flex justify-center gap-6">
                 {categories.map((category, index) => (
