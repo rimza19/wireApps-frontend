@@ -1,11 +1,13 @@
 //Men's Clothing
 import React from "react";
+import Navbar from '../components/Navbar';
 
 const MenPage  = () => {
     return (
-        <div>
-          <h1>Welcome to My Men's Category</h1>
-        </div>
+      <div>
+        <Navbar />
+
+      </div>
       );
     };
     
