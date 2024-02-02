@@ -16,7 +16,7 @@ const Product = ({ title, image,price, description, category }) => {
     }, [description]);
 
     return (
-      <div className="relative w-80 h-96 bg-gray-100 shadow-xl rounded-2xl p-6 mb-12">
+      <div className="relative w-80 h-96 bg-gray-100 shadow-xl rounded-2xl p-2 mb-12">
           {/* Product Title */}
           <h2 className="justify-center ml-10 top-67 font-bold text-l leading-tight text-gray-800 font-roboto">{title}</h2>
 
