@@ -1,6 +1,11 @@
 import React , { useState, useEffect, useRef } from 'react';
 
-const Product = ({ title, image, bannerBg,price, details }) => {
+const Product = ({ title, image,price, description, category }) => {
+
+    // Define dynamic background color based on the category
+        const getBackgroundColor = () => {
+            return category.toLowerCase() === 'men\'s clothing' ? '#2BD9AF' : '#FF5E84';
+        };
 
     const [isOverflowing, setIsOverflowing] = useState(false);
     const detailsRef = useRef(null);
@@ -8,7 +13,7 @@ const Product = ({ title, image, bannerBg,price, details }) => {
     useEffect(() => {
         const isTextOverflowing = detailsRef.current.scrollHeight > detailsRef.current.clientHeight;
         setIsOverflowing(isTextOverflowing);
-    }, [details]);
+    }, [description]);
 
     return (
       <div className="relative w-80 h-96 bg-gray-100 shadow-xl rounded-2xl p-6 mb-12">
@@ -23,14 +28,16 @@ const Product = ({ title, image, bannerBg,price, details }) => {
         />
   
         {/* Product Banner */}
-        <div className="absolute inset-x-0 h-28 bottom-0 rounded-2xl flex flex-col "style={{ backgroundColor: bannerBg }}>
+        <div className="absolute inset-x-0 h-28 bottom-0 rounded-2xl flex flex-col "style={{ backgroundColor: getBackgroundColor() } }>
             {/* Product Price */}
              <p className="text-center text-xl text-blue-600 font-bold mt-2 ">Rs {price}</p>
 
              {/* Product Details */}
+
              <p ref={detailsRef} className="text-sm text-gray-900 px-4 text-center mb-4 overflow-hidden">
-                    {isOverflowing ? `${details.slice(0, 100)}...` : details}
+                    {isOverflowing ? `${description.slice(0, 100)}...` : description}
                 </p>
+               
         </div>
 
       </div>

@@ -54,10 +54,8 @@ const Home  = () => {
 
         <div className="carousel-container">
         <Slider {...settings}>
-          {products.map((product, index) => (
-             <div key={index}>
-             <Product category={product.category} {...product} />
-            </div>
+        {products.map((product, index) => (
+            <Product key={index} category={product.category} {...product} />
           ))}
         </Slider>
       </div>
