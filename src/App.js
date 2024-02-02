@@ -1,9 +1,9 @@
-import './App.css';
+import React from "react";
 
-export default function App() {
-  return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+import ProjectRoutes from "./Routes";
+
+function App() {
+  return <ProjectRoutes />;
 }
+
+export default App;
