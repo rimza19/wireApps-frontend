@@ -70,14 +70,14 @@ const Home  = () => {
     };
     // Apply padding to the Slider container and adjust first image padding
     const sliderContainerStyle = {
-        padding: "10px 180px", // Adjust padding as needed
+        padding: "10px 60px", // Adjust padding as needed
     };
 
     return (
         <div>
             <  Navbar />
             
-        <h3 className="mb-2 text-xl font-bold p-4 ml-36"> Flash Sale</h3>
+        <h3 className="text-xl font-bold font-mono ml-20"> Flash Sale</h3>
 
         <div className="carousel-container"  style={sliderContainerStyle}>
         <Slider {...settings}>
@@ -89,12 +89,12 @@ const Home  = () => {
                 </Slider>
       </div>
 
-        <h2 className="mb-2 text-xl font-bold p-4 ml-36"> Categories</h2>
+        <h2 className="mb-2 text-xl font-mono font-bold ml-20"> Categories</h2>
         <div className="flex justify-center gap-6">
                 {categories.map((category, index) => (
-                    <a key={index} href={category.link} className="flex-1 h-56 bg-gray-100 shadow-xl rounded-2xl p-8 flex flex-col justify-center items-center mx-6" style={{ backgroundColor: category.backgroundColor,maxWidth: '700px' }}>
+                    <a key={index} href={category.link} className="flex-1 h-52 bg-gray-100 shadow-xl rounded-2xl p-8 flex flex-col justify-center items-center mx-4" style={{ backgroundColor: category.backgroundColor,maxWidth: '500px' }}>
                         {/* Category content */}
-                        <p className="text-white text-4xl font-bold font-roboto text-center">{category.title}</p>
+                        <p className="text-white text-4xl font-bold font-mono text-center">{category.title}</p>
                     </a>
                 ))}
             </div>

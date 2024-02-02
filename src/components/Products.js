@@ -16,9 +16,9 @@ const Product = ({ title, image,price, description, category }) => {
     }, [description]);
 
     return (
-      <div className="relative w-80 h-96 bg-gray-100 shadow-xl rounded-2xl p-2 mb-12">
+      <div className="relative w-80 h-96 bg-gray-100 shadow-xl rounded-2xl p-4 mb-6 mt-4 ml-4">
           {/* Product Title */}
-          <h2 className="justify-center ml-10 top-67 font-bold text-l leading-tight text-gray-800 font-roboto">{title}</h2>
+          <h3 className="text-center top-62 font-bold  leading-tight text-gray-800 font-mono">{title}</h3>
 
         {/* Product Image */}
         <img
@@ -28,13 +28,13 @@ const Product = ({ title, image,price, description, category }) => {
         />
   
         {/* Product Banner */}
-        <div className="absolute inset-x-0 h-28 bottom-0 rounded-2xl flex flex-col "style={{ backgroundColor: getBackgroundColor() } }>
+        <div className="absolute inset-x-0 h-28 bottom-0 rounded-2xl flex flex-col mt-1 "style={{ backgroundColor: getBackgroundColor() } }>
             {/* Product Price */}
-             <p className="text-center text-xl text-blue-600 font-bold mt-2 ">Rs {price}</p>
+             <p className="text-center text-xl text-blue-600 font-bold mt-1 mb-1 ">Rs {price}</p>
 
              {/* Product Details */}
 
-             <p ref={detailsRef} className="text-sm text-gray-900 px-4 text-center mb-4 overflow-hidden">
+             <p ref={detailsRef} className="text-sm font-serif text-gray-900 px-4 text-center mb-4 overflow-hidden">
                     {isOverflowing ? `${description.slice(0, 100)}...` : description}
                 </p>
                
